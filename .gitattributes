@@ -1,0 +1,4 @@
+.editorconfig export-ignore
+.git* export-ignore
+CONTRIBUTING.md export-ignore
+.github export-ignore

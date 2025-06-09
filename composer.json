@@ -14,13 +14,15 @@
     "issues": "https://github.com/astappiev/wp-sentry/issues"
   },
   "autoload": {
-    "files": ["wp-sentry.php"]
+    "files": [
+      "wp-sentry.php"
+    ]
   },
-  "archive" : {
+  "archive": {
     "exclude": [
       ".editorconfig",
+      ".gitattributes",
       ".gitignore",
-      ".github",
       "README.md"
     ]
   },

@@ -7,7 +7,7 @@
  * License: MIT
  * Author: Oleh Astappiev
  * Constants: SENTRY_DSN, SENTRY_BROWSER_DSN
- * Version: 0.0.3
+ * Version: 0.0.4
  */
 
 if (!defined('ABSPATH')) {
