@@ -1,22 +1,22 @@
 <?php
+
 /**
  * Plugin Name: Sentry for WordPress
- * Version: 0.0.1
- * Description: Minimal Sentry error tracking for WordPress
  * Plugin URI: https://github.com/astappiev/wp-sentry
- * License: The MIT License (MIT)
+ * Description: Minimal Sentry error tracking for WordPress
+ * License: MIT
  * Author: Oleh Astappiev
  * Constants: SENTRY_DSN, SENTRY_BROWSER_DSN
+ * Version: 0.0.3
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-if (class_exists('\Sentry\SentrySdk') && defined('SENTRY_DSN') && !defined('SENTRY_LOADED')) {
-    define('SENTRY_LOADED', true);
-
-    $sentryOptions = [
+function get_wp_sentry_options()
+{
+    return [
         'environment' => defined('WP_ENVIRONMENT_TYPE') ? WP_ENVIRONMENT_TYPE : 'production',
         'error_types' => E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_WARNING,
         'tags' => [
@@ -24,8 +24,12 @@ if (class_exists('\Sentry\SentrySdk') && defined('SENTRY_DSN') && !defined('SENT
             'language' => get_bloginfo('language'),
         ],
     ];
+}
 
-    \Sentry\init(array_merge($sentryOptions, [
+if (class_exists('\Sentry\SentrySdk') && defined('SENTRY_DSN') && !defined('SENTRY_LOADED')) {
+    define('SENTRY_LOADED', true);
+
+    \Sentry\init(array_merge(get_wp_sentry_options(), [
         'dsn' => SENTRY_DSN,
     ]));
 
@@ -52,7 +56,7 @@ if (class_exists('\Sentry\SentrySdk') && defined('SENTRY_DSN') && !defined('SENT
 
 if (defined('SENTRY_BROWSER_DSN')) {
     add_action('wp_enqueue_scripts', function () {
-        $options = array_merge(get_sentry_options(), [
+        $options = array_merge(get_wp_sentry_options(), [
             'dsn' => SENTRY_BROWSER_DSN,
         ]);
 
