@@ -1,0 +1,23 @@
+{
+  "name": "astappiev/wp-sentry",
+  "license": "MIT",
+  "description": "Sentry for WordPress",
+  "homepage": "https://github.com/astappiev/wp-sentry",
+  "type": "wordpress-muplugin",
+  "authors": [
+    {
+      "name": "Oleh Astappiev",
+      "homepage": "https://github.com/astappiev"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/astappiev/wp-sentry/issues"
+  },
+  "autoload": {
+    "files": ["wp-sentry.php"]
+  },
+  "require": {
+    "php": ">=8.0",
+    "sentry/sentry": "^4.12"
+  }
+}
