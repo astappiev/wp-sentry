@@ -16,6 +16,14 @@
   "autoload": {
     "files": ["wp-sentry.php"]
   },
+  "archive" : {
+    "exclude": [
+      ".editorconfig",
+      ".gitignore",
+      ".github",
+      "README.md"
+    ]
+  },
   "require": {
     "php": ">=8.0",
     "sentry/sentry": "^4.12"
