@@ -7,14 +7,14 @@
  * License: MIT
  * Author: Oleh Astappiev
  * Constants: SENTRY_DSN, SENTRY_BROWSER_DSN
- * Version: 0.0.4
+ * Version: 0.1.0
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-function get_wp_sentry_options()
+function get_wp_sentry_options(): array
 {
     return [
         'environment' => defined('WP_ENVIRONMENT_TYPE') ? WP_ENVIRONMENT_TYPE : 'production',
@@ -60,7 +60,7 @@ if (defined('SENTRY_BROWSER_DSN')) {
             'dsn' => SENTRY_BROWSER_DSN,
         ]);
 
-        wp_enqueue_script('sentry-browser-cdn', 'https://browser.sentry-cdn.com/9.27.0/bundle.min.js', [], null, ['strategy' => 'defer', 'in_footer' => false]);
+        wp_enqueue_script('sentry-browser-cdn', 'https://browser.sentry-cdn.com/10.34.0/bundle.min.js', [], null, ['strategy' => 'defer', 'in_footer' => false]);
         wp_add_inline_script('sentry-browser-cdn', sprintf("try{var opts=%s;if(typeof Sentry!='undefined'){Sentry.init(opts)}else{document.getElementById('sentry-browser-cdn-js').addEventListener('load',()=>{Sentry.init(opts)})}}catch(e){console.error(e)}", json_encode($options)));
     }, 0);
 }

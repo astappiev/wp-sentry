@@ -13,11 +13,6 @@
   "support": {
     "issues": "https://github.com/astappiev/wp-sentry/issues"
   },
-  "autoload": {
-    "files": [
-      "wp-sentry.php"
-    ]
-  },
   "archive": {
     "exclude": [
       ".editorconfig",
